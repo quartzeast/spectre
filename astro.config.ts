@@ -10,7 +10,8 @@ import { spectreDark } from './src/ec-theme';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://spectre.louisescher.dev',
+  site: 'https://quartzeast.github.io',
+  base: '/spectre',
   output: 'static',
   integrations: [
     expressiveCode({
@@ -33,17 +34,17 @@ export default defineConfig({
           title: 'Projects'
         }
       },
-      giscus: {
-        repository: 'louisescher/spectre',
-        repositoryId: 'R_kgDONjm3ig',
-        category: 'General',
-        categoryId: 'DIC_kwDONjm3is4ClmBF',
-        mapping: 'pathname',
-        strict: true,
-        reactionsEnabled: true,
-        emitMetadata: false,
-        lang: 'en',
-      }
+      // giscus: {
+      //   repository: 'louisescher/spectre',
+      //   repositoryId: 'R_kgDONjm3ig',
+      //   category: 'General',
+      //   categoryId: 'DIC_kwDONjm3is4ClmBF',
+      //   mapping: 'pathname',
+      //   strict: true,
+      //   reactionsEnabled: true,
+      //   emitMetadata: false,
+      //   lang: 'en',
+      // }
     })
   ],
   adapter: node({
