@@ -58,10 +58,7 @@ const config = defineConfig({
       //   lang: GISCUS_LANG,
       // }
     })
-  ],
-  adapter: node({
-    mode: 'standalone'
-  })
+  ]
 });
 
 export default config;
