@@ -26,6 +26,7 @@
   background: #252525;
   color: white;
   text-decoration: none;
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
 }
 
 .blog-tag:hover, .blog-tag:focus-visible {

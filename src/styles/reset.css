@@ -38,7 +38,7 @@ h5,
 h6,
 code {
 	overflow-wrap: anywhere;
-	font-family: 'Overpass Mono',  monospace;
+	font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
 }
 
 h1,

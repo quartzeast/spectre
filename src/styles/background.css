@@ -7,7 +7,7 @@
   left: 0;
   transition: all 0.15s ease;
   opacity: 0;
-  font-family: 'Overpass Mono', monospace;
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
   user-select: none;
   pointer-events: none;
 }

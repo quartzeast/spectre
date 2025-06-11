@@ -38,6 +38,7 @@ a:hover {
 
 .no-mt {
   margin-top: 0;
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
 }
 
 main {

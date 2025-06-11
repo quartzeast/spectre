@@ -32,15 +32,13 @@ const config = defineConfig({
     mdx(),
     sitemap(),
     spectre({
-      name: 'Spectre',
+      name: 'quartz',
       openGraph: {
         home: {
-          title: 'Spectre',
-          description: 'A minimalistic theme for Astro.'
+          title: 'quartz',
         },
         blog: {
           title: 'Blog',
-          description: 'News and guides for Spectre.'
         },
         projects: {
           title: 'Projects'
