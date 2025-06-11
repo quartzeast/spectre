@@ -23,7 +23,7 @@ const {
 
 // https://astro.build/config
 const config = defineConfig({
-  site: 'https://spectre.louisescher.dev',
+  site: 'https://quartzeast.github.io',
   output: 'static',
   integrations: [
     expressiveCode({
@@ -46,17 +46,17 @@ const config = defineConfig({
           title: 'Projects'
         }
       },
-      giscus: {
-        repository: GISCUS_REPO,
-        repositoryId: GISCUS_REPO_ID,
-        category: GISCUS_CATEGORY,
-        categoryId: GISCUS_CATEGORY_ID,
-        mapping: GISCUS_MAPPING as any,
-        strict: GISCUS_STRICT === "true",
-        reactionsEnabled: GISCUS_REACTIONS_ENABLED === "true",
-        emitMetadata: GISCUS_EMIT_METADATA === "true",
-        lang: GISCUS_LANG,
-      }
+      // giscus: {
+      //   repository: GISCUS_REPO,
+      //   repositoryId: GISCUS_REPO_ID,
+      //   category: GISCUS_CATEGORY,
+      //   categoryId: GISCUS_CATEGORY_ID,
+      //   mapping: GISCUS_MAPPING as any,
+      //   strict: GISCUS_STRICT === "true",
+      //   reactionsEnabled: GISCUS_REACTIONS_ENABLED === "true",
+      //   emitMetadata: GISCUS_EMIT_METADATA === "true",
+      //   lang: GISCUS_LANG,
+      // }
     })
   ],
   adapter: node({
