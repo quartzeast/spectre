@@ -65,6 +65,7 @@ main {
 
 .expressive-code figure pre {
   border-radius: 0 !important;
+  font-family: 'Fira Code', monospace !important;
 }
 
 .expressive-code figcaption {
@@ -77,6 +78,7 @@ main {
 }
 
 .expressive-code span.title:not(.is-terminal span.title) {
+  font-family: 'Fira Code', monospace !important;
   border-radius: 0 !important;
 }
 
@@ -87,6 +89,10 @@ main {
 
 .expressive-code .frame.has-title:not(.is-terminal) figcaption.header {
   border-radius: 0 !important;
+}
+
+.expressive-code code {
+  font-family: 'Fira Code', monospace !important;
 }
 
 .post-container {
