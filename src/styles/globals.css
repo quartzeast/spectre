@@ -68,35 +68,15 @@ html[data-theme="light"] {
   margin-bottom: 0;
 }
 
-.overview-list li:hover {
-  transform: translateX(4px);
-}
-
 a {
   color: var(--primary-light);
   text-decoration: none;
   transition: all 0.2s ease;
-  position: relative;
 }
 
 a:hover {
   color: var(--primary);
   text-decoration: none;
-}
-
-a:not(.post-container):not(.socials-link):not(.block-link)::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background: var(--gradient-primary);
-  transition: width 0.3s ease;
-}
-
-a:not(.post-container):not(.socials-link):not(.block-link):hover::after {
-  width: 100%;
 }
 
 .no-mt {
@@ -122,7 +102,6 @@ main {
 
 .glow-icon:hover {
   filter: drop-shadow(0 0 12px rgba(var(--primary-rgb), 0.7));
-  transform: scale(1.05);
 }
 
 .expressive-code {
@@ -181,29 +160,11 @@ main {
   overflow: hidden;
 }
 
-.post-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-primary);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
 .post-container:hover, .post-container:focus-visible {
   background: var(--card-bg-hover);
-  border-color: var(--primary);
   color: var(--text-color);
   text-decoration: none;
-  transform: translateY(-4px);
   box-shadow: var(--shadow-large);
-}
-
-.post-container:hover::before {
-  transform: scaleX(1);
 }
 
 .post-container:focus-visible {
@@ -317,7 +278,6 @@ p {
 .socials-link:hover {
   color: var(--primary);
   background: var(--gradient-subtle);
-  transform: translateX(4px);
   text-decoration: none;
 }
 
@@ -346,7 +306,6 @@ p {
   background: var(--gradient-primary);
   text-decoration: none;
   outline: none;
-  transform: translateY(-1px);
   box-shadow: var(--shadow-medium);
 }
 

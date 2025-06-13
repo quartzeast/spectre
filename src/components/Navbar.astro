@@ -22,15 +22,9 @@ const path = Astro.url.pathname;
       <input id="search" type="text" placeholder="搜索 (Ctrl+K)" />
       <div id="search-results"></div>
     </li>
-    <li class="nav-separator">/</li>
-    <li>
+    <li class="nav-separator">/</li>    <li>
       <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
-        <div class="theme-toggle-track">
-          <div class="theme-toggle-thumb">
-            <span class="theme-icon theme-icon-light">☀️</span>
-            <span class="theme-icon theme-icon-dark">🌙</span>
-          </div>
-        </div>
+        <span class="theme-emoji">🌙</span>
       </button>
     </li>
   </ul>
@@ -162,15 +156,15 @@ const path = Astro.url.pathname;
     if (stored) return stored;
     return prefersDark.matches ? "dark" : "light";
   }
-
   // Apply theme to HTML element
   function applyTheme(theme) {
+    const themeEmoji = document.querySelector(".theme-emoji");
     if (theme === "light") {
       document.documentElement.setAttribute("data-theme", "light");
-      themeToggle?.classList.add("light");
+      if (themeEmoji) themeEmoji.textContent = "☀️";
     } else {
       document.documentElement.setAttribute("data-theme", "dark");
-      themeToggle?.classList.remove("light");
+      if (themeEmoji) themeEmoji.textContent = "🌙";
     }
     localStorage.setItem("theme", theme);
   }
@@ -251,30 +245,16 @@ const path = Astro.url.pathname;
     border-radius: 8px;
     font-weight: 500;
   }
-
   nav a:hover,
   nav a:focus-visible {
     color: var(--primary);
     background: var(--gradient-subtle);
     outline: none;
-    transform: translateY(-1px);
   }
-
   nav a.active {
     color: var(--primary);
     background: var(--gradient-subtle);
     box-shadow: var(--shadow-subtle);
-  }
-
-  nav a.active::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 1rem;
-    right: 1rem;
-    height: 2px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
   }
 
   #search {
@@ -325,10 +305,8 @@ const path = Astro.url.pathname;
     color: var(--text-color);
     text-decoration: none;
   }
-
   #search-results a:hover {
     background: var(--gradient-subtle);
-    transform: translateX(4px);
   }
 
   #search-results hr.separator {
@@ -336,90 +314,30 @@ const path = Astro.url.pathname;
     border: none;
     height: 1px;
     background: var(--border-color-muted);
-  }
-  /* Theme Toggle Styles */
+  }  /* Theme Toggle Styles */
   .theme-toggle {
     background: none;
     border: none;
-    padding: 0;
+    padding: 0.5rem;
     cursor: pointer;
     outline: none;
     transition: transform 0.2s ease;
+    font-size: 1.25rem;
+    border-radius: 8px;
   }
 
   .theme-toggle:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    background: var(--gradient-subtle);
   }
 
   .theme-toggle:active {
     transform: scale(0.95);
   }
 
-  .theme-toggle-track {
-    width: 52px;
-    height: 28px;
-    background: var(--gradient-primary);
-    border-radius: 14px;
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid transparent;
-    box-shadow: var(--shadow-subtle);
-  }
-
-  .theme-toggle:hover .theme-toggle-track {
-    box-shadow: var(--shadow-medium);
-    transform: scale(1.05);
-  }
-  .theme-toggle-thumb {
-    width: 24px;
-    height: 24px;
-    background: var(--card-bg);
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    transition:
-      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    box-shadow: var(--shadow-medium);
-    border: 1px solid var(--border-color-muted);
-  }
-  .theme-toggle.light .theme-toggle-thumb {
-    transform: translateX(24px);
-    background: var(--card-bg);
-  }
-  .theme-icon {
-    position: absolute;
-    transition:
-      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .theme-icon-light {
-    opacity: 0;
-    transform: scale(0.5) rotate(-90deg);
-  }
-
-  .theme-icon-dark {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-  .theme-toggle.light .theme-icon-light {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-
-  .theme-toggle.light .theme-icon-dark {
-    opacity: 0;
-    transform: scale(0.5) rotate(90deg);
+  .theme-emoji {
+    display: block;
+    transition: transform 0.3s ease;
   }
   .mobile-nav-toggle {
     display: none;

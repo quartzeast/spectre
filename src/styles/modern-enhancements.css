@@ -25,26 +25,6 @@ main {
   overflow: visible;
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 2px;
-  background: var(--gradient-primary);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: exclude;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.card:hover::after {
-  opacity: 0.6;
-}
-
 /* Improved focus states */
 *:focus-visible {
   outline: 2px solid var(--primary);
@@ -62,10 +42,6 @@ button, .button {
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
-}
-
-button:hover, .button:hover {
-  transform: translateY(-1px);
 }
 
 /* Loading states and micro-interactions */
@@ -93,15 +69,6 @@ button:hover, .button:hover {
 .overview-list li:nth-child(2) { animation-delay: 0.2s; }
 .overview-list li:nth-child(3) { animation-delay: 0.3s; }
 .overview-list li:nth-child(4) { animation-delay: 0.4s; }
-
-/* Enhanced post containers */
-.post-container {
-  will-change: transform;
-}
-
-.post-container:hover {
-  will-change: auto;
-}
 
 /* Improved header spacing */
 .header-container {
