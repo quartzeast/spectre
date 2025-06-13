@@ -19,7 +19,7 @@ const path = Astro.url.pathname;
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <input id="search" type="text" placeholder="搜索 (Ctrl+K)" />
+      <input id="search" type="text" placeholder="搜索" />
       <div id="search-results"></div>
     </li>
     <li class="nav-separator">/</li>
@@ -91,7 +91,7 @@ const path = Astro.url.pathname;
   });
 
   searchElement?.addEventListener("blur", () => {
-    searchElement.placeholder = "搜索 (Ctrl+K)";
+    searchElement.placeholder = "搜索";
   });
 
   searchElement?.addEventListener("blur", () => {
@@ -185,7 +185,7 @@ const path = Astro.url.pathname;
     if (window.matchMedia("(max-width: 640px)").matches) {
       searchElement.placeholder = "搜索";
     } else {
-      searchElement.placeholder = "搜索 (Ctrl+K)";
+      searchElement.placeholder = "搜索";
     }
   };
 
