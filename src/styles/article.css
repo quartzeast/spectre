@@ -53,7 +53,7 @@ p img {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .25rem;
   margin-bottom: 0;
   list-style-type: none;
   position: relative;
@@ -65,19 +65,88 @@ p img {
   padding: .25rem .5rem;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .toc-card ol li a:hover {
   color: var(--text-color);
   text-decoration: none;
+  background: var(--gradient-subtle);
+}
+
+/* TOC Hierarchy - Indentation for different heading levels */
+.toc-li[data-depth="1"] {
+  margin-left: 0;
+  font-weight: 600;
+}
+
+.toc-li[data-depth="2"] {
+  margin-left: 0.5rem;
+  font-weight: 500;
 }
 
 .toc-li[data-depth="3"] {
   margin-left: 1rem;
+  position: relative;
 }
 
-.toc-li[data-depth="4"]{
+.toc-li[data-depth="3"]::before {
+  content: "•";
+  position: absolute;
+  left: -0.75rem;
+  color: var(--text-color-subtle);
+  font-size: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toc-li[data-depth="4"] {
+  margin-left: 1.5rem;
+  position: relative;
+}
+
+.toc-li[data-depth="4"]::before {
+  content: "◦";
+  position: absolute;
+  left: -0.75rem;
+  color: var(--text-color-subtle);
+  font-size: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toc-li[data-depth="5"] {
   margin-left: 2rem;
+  font-size: 0.875rem;
+  position: relative;
+}
+
+.toc-li[data-depth="5"]::before {
+  content: "▪";
+  position: absolute;
+  left: -0.75rem;
+  color: var(--text-color-subtle);
+  font-size: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toc-li[data-depth="6"] {
+  margin-left: 2.5rem;
+  font-size: 0.875rem;
+  position: relative;
+}
+
+.toc-li[data-depth="6"]::before {
+  content: "▫";
+  position: absolute;
+  left: -0.75rem;
+  color: var(--text-color-subtle);
+  font-size: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .no-mt {
