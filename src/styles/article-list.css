@@ -23,15 +23,15 @@
 
 .blog-tag {
   padding: .25rem .5rem;
-  background: #252525;
-  color: white;
+  background: var(--border-color-muted);
+  color: var(--text-color);
   text-decoration: none;
   font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
 }
 
 .blog-tag:hover, .blog-tag:focus-visible {
-  background: #353535;
-  color: white;
+  background: var(--border-color);
+  color: var(--text-color);
   text-decoration: none;
 }
 

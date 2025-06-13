@@ -1,7 +1,7 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<'div'> {}
+interface Props extends HTMLAttributes<"div"> {}
 
 const { class: className, ...props } = Astro.props;
 ---
@@ -13,9 +13,13 @@ const { class: className, ...props } = Astro.props;
   .card {
     width: 100%;
     height: auto;
-    background-color: #121212;
-    border: 1px solid #353535;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     padding: 1.5rem;
     overflow: hidden;
+  }
+
+  html[data-theme="light"] .card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 </style>

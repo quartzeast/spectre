@@ -22,6 +22,29 @@ const path = Astro.url.pathname;
       <input id="search" type="text" placeholder="Search (Ctrl+K)" />
       <div id="search-results"></div>
     </li>
+    <li class="nav-separator">/</li>
+    <li>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <div class="theme-toggle-track">
+          <div class="theme-toggle-thumb">
+            <Icon
+              type="lucide"
+              name="sun"
+              width={16}
+              height={16}
+              class="theme-icon theme-icon-light"
+            />
+            <Icon
+              type="lucide"
+              name="moon"
+              width={16}
+              height={16}
+              class="theme-icon theme-icon-dark"
+            />
+          </div>
+        </div>
+      </button>
+    </li>
   </ul>
   <button class="mobile-nav-toggle">
     <Icon
@@ -136,10 +159,43 @@ const path = Astro.url.pathname;
 
     results.classList.add("active");
   });
-
   navToggle?.addEventListener("click", () => {
     navToggle.classList.toggle("active");
     document.querySelector("nav").classList.toggle("active");
+  });
+
+  // Theme toggle functionality
+  const themeToggle = document.querySelector("#theme-toggle");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // Get current theme from localStorage or use system preference
+  function getCurrentTheme() {
+    const stored = localStorage.getItem("theme");
+    if (stored) return stored;
+    return prefersDark.matches ? "dark" : "light";
+  }
+
+  // Apply theme to HTML element
+  function applyTheme(theme) {
+    if (theme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+      themeToggle?.classList.add("light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      themeToggle?.classList.remove("light");
+    }
+    localStorage.setItem("theme", theme);
+  }
+
+  // Initialize theme
+  const currentTheme = getCurrentTheme();
+  applyTheme(currentTheme);
+
+  // Toggle theme on button click
+  themeToggle?.addEventListener("click", () => {
+    const current = getCurrentTheme();
+    const newTheme = current === "dark" ? "light" : "dark";
+    applyTheme(newTheme);
   });
 
   const handleTabletChange = () => {
@@ -202,37 +258,117 @@ const path = Astro.url.pathname;
     padding: 0.25rem 0.5rem;
     width: 160px;
   }
-
   #search::placeholder {
-    color: white;
+    color: var(--text-color);
   }
 
   #search:focus {
     background-color: var(--primary);
   }
-
   #search-results {
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
-    background-color: #252525;
+    background-color: var(--search-bg);
     border: 1px solid var(--primary);
     display: none;
     width: 200%;
     z-index: 10;
     padding: 0.5rem;
   }
-
   #search-results.active:has(*) {
     display: block;
   }
+  /* Theme Toggle Styles */
+  .theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s ease;
+  }
 
+  .theme-toggle:hover {
+    transform: scale(1.05);
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.95);
+  }
+
+  .theme-toggle-track {
+    width: 48px;
+    height: 24px;
+    background-color: var(--border-color);
+    border-radius: 12px;
+    position: relative;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+  }
+
+  .theme-toggle:hover .theme-toggle-track {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .theme-toggle-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .theme-toggle.light .theme-toggle-thumb {
+    transform: translateX(24px);
+    background-color: var(--bg-color);
+  }
+
+  .theme-icon {
+    position: absolute;
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--bg-color);
+  }
+
+  .theme-icon-light {
+    opacity: 0;
+    transform: scale(0.5) rotate(-90deg);
+  }
+
+  .theme-icon-dark {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  .theme-toggle.light .theme-icon-light {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    color: var(--text-color);
+  }
+
+  .theme-toggle.light .theme-icon-dark {
+    opacity: 0;
+    transform: scale(0.5) rotate(90deg);
+  }
   .mobile-nav-toggle {
     display: none;
     width: 40px;
     height: 40px;
-    background-color: #121212;
-    border: 1px solid #353535;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -261,9 +397,15 @@ const path = Astro.url.pathname;
     .mobile-nav-toggle {
       display: flex;
     }
-
     .nav-separator {
       display: none;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 4rem;
+      z-index: 3;
     }
 
     nav ul {
@@ -282,22 +424,21 @@ const path = Astro.url.pathname;
       height: calc(100vh - 1rem - 40px);
       align-items: start;
     }
-
     nav.active {
-      background-color: #181818;
+      background-color: var(--nav-bg);
     }
 
     nav.active ul {
       opacity: 1;
       pointer-events: all;
-      background-color: #181818;
+      background-color: var(--nav-bg);
     }
 
     nav ul li {
       position: relative;
       transition: all 0.25s ease-out;
       top: -1.5rem;
-      border-bottom: 1px solid #353535;
+      border-bottom: 1px solid var(--border-color);
       width: 100%;
       max-width: none;
       padding: 0;
@@ -312,7 +453,7 @@ const path = Astro.url.pathname;
     }
 
     nav ul li:first-child {
-      border-top: 1px solid #353535;
+      border-top: 1px solid var(--border-color);
     }
 
     nav.active ul li {
@@ -336,7 +477,7 @@ const path = Astro.url.pathname;
   #search-results a {
     display: block;
     text-decoration: none;
-    color: white !important;
+    color: var(--text-color) !important;
     padding: 0.5rem;
   }
 
@@ -362,16 +503,15 @@ const path = Astro.url.pathname;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
   #search-results mark {
     background-color: var(--primary);
-    color: white;
+    color: var(--bg-color);
   }
 
   .separator {
     margin: 0.5rem 0.5rem;
     border: none;
     height: 1px;
-    background-color: #353535;
+    background-color: var(--border-color);
   }
 </style>
