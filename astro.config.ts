@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import spectre from './package/src';
 
 import node from '@astrojs/node';
-import { spectreDark } from './src/ec-theme';
+import { spectreDark, spectreLight } from './src/ec-theme';
 
 const {
   GISCUS_REPO,
@@ -24,10 +24,16 @@ const {
 // https://astro.build/config
 const config = defineConfig({
   site: 'https://quartzeast.github.io',
-  output: 'static',
-  integrations: [
+  output: 'static',  integrations: [
     expressiveCode({
-      themes: [spectreDark],
+      themes: [spectreDark, spectreLight],
+      customizeTheme: (theme) => {
+        if (theme.name === 'Spectre Dark') {
+          theme.name = 'dark';
+        } else if (theme.name === 'Spectre Light') {
+          theme.name = 'light';
+        }
+      },
     }),
     mdx(),
     sitemap(),

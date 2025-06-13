@@ -34,6 +34,8 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 				(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
 			if (theme === 'light') {
 				document.documentElement.setAttribute('data-theme', 'light');
+			} else {
+				document.documentElement.setAttribute('data-theme', 'dark');
 			}
 		</script>
 		
