@@ -9,22 +9,22 @@ const path = Astro.url.pathname;
   <a class="site-title" href="/">{name}</a>
   <ul>
     <li>
-      <a href="/blog" class:list={{ active: path.startsWith("/blog") }}>Blog</a>
+      <a href="/blog" class:list={{ active: path.startsWith("/blog") }}>文章</a>
     </li>
     <li class="nav-separator">/</li>
     <li>
       <a href="/projects" class:list={{ active: path.startsWith("/projects") }}
-        >Projects</a
+        >项目</a
       >
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <input id="search" type="text" placeholder="Search (Ctrl+K)" />
+      <input id="search" type="text" placeholder="搜索 (Ctrl+K)" />
       <div id="search-results"></div>
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
         <div class="theme-toggle-track">
           <div class="theme-toggle-thumb">
             <span class="theme-icon theme-icon-light">☀️</span>
@@ -96,7 +96,7 @@ const path = Astro.url.pathname;
   });
 
   searchElement?.addEventListener("blur", () => {
-    searchElement.placeholder = "Search (Ctrl+K)";
+    searchElement.placeholder = "搜索 (Ctrl+K)";
   });
 
   searchElement?.addEventListener("blur", () => {
@@ -142,7 +142,7 @@ const path = Astro.url.pathname;
     }
 
     if (search.results.length === 0 && e.target.value.length > 0) {
-      results.innerHTML = '<p style="margin-top: 0;">No results found</p>';
+      results.innerHTML = '<p style="margin-top: 0;">未找到结果</p>';
     }
 
     results.classList.add("active");
@@ -188,9 +188,9 @@ const path = Astro.url.pathname;
 
   const handleTabletChange = () => {
     if (window.matchMedia("(max-width: 640px)").matches) {
-      searchElement.placeholder = "Search";
+      searchElement.placeholder = "搜索";
     } else {
-      searchElement.placeholder = "Search (Ctrl+K)";
+      searchElement.placeholder = "搜索 (Ctrl+K)";
     }
   };
 

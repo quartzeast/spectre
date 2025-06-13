@@ -44,10 +44,10 @@ const config = defineConfig({
           title: 'quartz',
         },
         blog: {
-          title: 'Blog',
+          title: '文章',
         },
         projects: {
-          title: 'Projects'
+          title: '项目'
         }
       },
       // giscus: {
