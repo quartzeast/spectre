@@ -165,21 +165,38 @@ const { Content, headings } = await render(post);
     color: var(--text-color);
     background: var(--primary);
   }
-
   .left {
     height: 100%;
     position: relative;
   }
-
   .toc-card {
     position: sticky;
-    top: 2rem;
+    top: 0;
+  }
+  .toc-card.card {
+    padding: 2rem;
+  }
+
+  .toc-card-content {
+    /* 无额外样式 */
+  }
+
+  /* 确保左右两列顶部对齐 */
+  .left,
+  article[slot="right"] {
+    margin-top: 0 !important;
+  }
+
+  /* 移除文章容器的任何额外间距 */
+  article[slot="right"] > .card:first-child {
+    margin-top: 0;
   }
 
   article {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 0;
   }
   .comments * {
     border-color: var(--border-color) !important;

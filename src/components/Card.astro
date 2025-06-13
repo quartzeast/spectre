@@ -19,15 +19,9 @@ const { class: className, ...props } = Astro.props;
     padding: 2rem;
     overflow: hidden;
     box-shadow: var(--shadow-subtle);
-    transition: all 0.3s ease;
+    transition: none;
     backdrop-filter: blur(10px);
     position: relative;
-  }
-
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-    border-color: var(--primary);
   }
 
   .card::before {
