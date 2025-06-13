@@ -64,7 +64,7 @@ p:last-of-type {
 }
 
 pre, pre *, code {
-  font-family: 'Overpass Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   line-height: 1;
 }
 

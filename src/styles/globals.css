@@ -94,7 +94,7 @@ main {
 
 .expressive-code figure pre {
   border-radius: 0 !important;
-  font-family: 'Fira Code', monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 .expressive-code figcaption {
@@ -107,7 +107,7 @@ main {
 }
 
 .expressive-code span.title:not(.is-terminal span.title) {
-  font-family: 'Fira Code', monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
   border-radius: 0 !important;
 }
 
@@ -121,7 +121,7 @@ main {
 }
 
 .expressive-code code {
-  font-family: 'Fira Code', monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 .post-container {
