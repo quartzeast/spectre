@@ -28,9 +28,9 @@ main {
 .card::after {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -1px;
   border-radius: inherit;
-  padding: 1px;
+  padding: 2px;
   background: var(--gradient-primary);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: exclude;
@@ -38,10 +38,11 @@ main {
   mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .card:hover::after {
-  opacity: 0.3;
+  opacity: 0.6;
 }
 
 /* Improved focus states */

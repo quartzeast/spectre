@@ -17,27 +17,11 @@ const { class: className, ...props } = Astro.props;
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 2rem;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--shadow-subtle);
-    transition: none;
+    transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     position: relative;
-  }
-
-  .card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--gradient-primary);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .card:hover::before {
-    opacity: 1;
   }
 
   .flex-col-card {
