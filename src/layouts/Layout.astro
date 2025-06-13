@@ -1,6 +1,7 @@
 ---
 import '../styles/reset.css';
 import '../styles/globals.css';
+import '../styles/modern-enhancements.css';
 
 import Background from '../components/Background.astro';
 import Navbar from '../components/Navbar.astro';
@@ -89,8 +90,8 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
 	</head>
 	<body>
+		<Navbar />
 		<main data-pagefind-ignore={pagefindIgnore}>
-			<Navbar />
 			<LayoutGrid>
 				<slot name="left" slot="left" />
 				<slot name="right" slot="right" />

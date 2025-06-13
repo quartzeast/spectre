@@ -1,0 +1,183 @@
+/* Modern Enhancements - Inspired by Josh W Comeau and ui.dev */
+
+/* Smooth scrolling and better font rendering */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body and main container improvements */
+body {
+  min-height: 100vh;
+  background: var(--bg-color);
+  transition: background-color 0.3s ease;
+}
+
+main {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Enhanced card hover effects */
+.card {
+  position: relative;
+  overflow: visible;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-primary);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: exclude;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::after {
+  opacity: 0.3;
+}
+
+/* Improved focus states */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enhanced typography */
+.no-mt {
+  margin-top: 0 !important;
+}
+
+/* Improved button and interactive elements */
+button, .button {
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+button:hover, .button:hover {
+  transform: translateY(-1px);
+}
+
+/* Loading states and micro-interactions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Staggered animations for lists */
+.overview-list li {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.overview-list li:nth-child(1) { animation-delay: 0.1s; }
+.overview-list li:nth-child(2) { animation-delay: 0.2s; }
+.overview-list li:nth-child(3) { animation-delay: 0.3s; }
+.overview-list li:nth-child(4) { animation-delay: 0.4s; }
+
+/* Enhanced post containers */
+.post-container {
+  will-change: transform;
+}
+
+.post-container:hover {
+  will-change: auto;
+}
+
+/* Improved header spacing */
+.header-container {
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1.75rem;
+}
+
+.header-container h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Enhanced prose styling */
+.prose {
+  max-width: none;
+}
+
+.prose > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose h1:first-child, .prose h2:first-child, .prose h3:first-child {
+  margin-top: 0;
+}
+
+/* Better spacing for content containers */
+.content-container > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Enhanced mobile experience */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .header-container {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .header-container h2 {
+    font-size: 1.375rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .nav,
+  .theme-toggle,
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+  
+  .card {
+    break-inside: avoid;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+} 

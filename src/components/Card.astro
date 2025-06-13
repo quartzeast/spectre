@@ -13,13 +13,53 @@ const { class: className, ...props } = Astro.props;
   .card {
     width: 100%;
     height: auto;
-    background-color: var(--card-bg);
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 1.5rem;
+    border-radius: 16px;
+    padding: 2rem;
     overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
   }
 
-  html[data-theme="light"] .card {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--primary);
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .flex-col-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .flex-col-card h2 {
+    margin: 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
   }
 </style>

@@ -2,58 +2,39 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 @media screen and (max-width: 640px) {
   .layout-grid-left, .layout-grid-right {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 }
 
-.flex-col-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.header-container * {
-  margin: 0;
-}
-
 .prose {
-  line-height: 1.6;
-}
-
-.post-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  text-decoration: none;
-  transition: background-color .15s ease, border .15s ease;
-}
-
-.post-container:hover, .post-container:focus-visible {
-  background-color: rgba(140, 92, 245, .125);
-  border: 1px solid var(--primary);
-}
-
-.post-container:focus-visible {
-  outline: none;
-}
-
-.post-date, .work-experience-duration {
+  line-height: 1.7;
   color: var(--text-color-muted);
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: var(--text-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h1:first-child, .prose h2:first-child, .prose h3:first-child, 
+.prose h4:first-child, .prose h5:first-child, .prose h6:first-child {
+  margin-top: 0;
+}
+
+/* Work experience specific styles */
+.work-experience-duration {
+  color: var(--text-color-muted);
+  font-size: 0.925rem;
 }
 
 .work-experience-container {
@@ -67,23 +48,20 @@
   padding-bottom: 1rem;
 }
 
-.work-experience-duration {
-  font-size: .925rem;
-}
-
 .work-experience-company {
-  margin-top: .25rem;
-  margin-bottom: .5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .work-experience-role {
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  font-weight: 500;
 }
 
-.socials-link {
-  color: var(--text-color);
-  display: flex;
-  flex-direction: row;
-  gap: .75rem;
-  align-items: center;
+.work-experience-desc {
+  color: var(--text-color-muted);
+  line-height: 1.6;
 }

@@ -3,13 +3,29 @@ article h2,
 article h3,
 article h4 {
   scroll-margin: 4rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-color);
 }
 
 article {
-  line-height: 1.6;
+  line-height: 1.7;
   min-width: 0;
+  color: var(--text-color-muted);
+  font-size: 1.0625rem;
 }
+
+article p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+article h1 { font-size: 2.5rem; font-weight: 700; }
+article h2 { font-size: 2rem; }
+article h3 { font-size: 1.625rem; }
+article h4 { font-size: 1.375rem; }
 
 article hr {
   height: 1px;
@@ -153,9 +169,14 @@ ol li a.active {
 }
 
 code:not(.astro-code code) {
-  background-color: var(--code-bg);
-  padding: .125rem .25rem;
-  font-size: .925rem;
+  background: var(--code-bg);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  border: 1px solid var(--border-color-muted);
+  color: var(--primary);
+  font-weight: 500;
 }
 
 .article-image {
@@ -174,16 +195,36 @@ code:not(.astro-code code) {
 }
 
 blockquote {
-  border-left: 2px solid var(--primary);
-  padding: .75rem 1rem;
-  margin-left: 0;
-  background-color: rgba(var(--primary-rgb), .25);
-  width: 100%;
+  border-left: 4px solid var(--primary);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  background: var(--gradient-subtle);
+  border-radius: 0 12px 12px 0;
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-size: 3rem;
+  color: var(--primary);
+  opacity: 0.3;
+  line-height: 1;
 }
 
 blockquote p {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+blockquote p:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 table {
