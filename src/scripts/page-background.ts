@@ -245,21 +245,10 @@ class PageBackground {
 }
 
 /**
- * Loads the Geist Mono font. We have to do this asynchronously because the font is not preloaded.
- */
-async function loadFont() {
-  const font = new FontFace('Geist Mono', 'url(/fonts/GeistMono.woff2)');
-
-  await font.load();
-  
-  document.fonts.add(font);
-}
-
-/**
  * First loads the Geist Mono font, then initializes the background.
  */
 async function initializeBackground() {
-  await loadFont();
+
 
   const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
   const overlayCanvas = document.getElementById('overlay-canvas') as HTMLCanvasElement;

@@ -27,20 +27,8 @@ const path = Astro.url.pathname;
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
         <div class="theme-toggle-track">
           <div class="theme-toggle-thumb">
-            <Icon
-              type="lucide"
-              name="sun"
-              width={16}
-              height={16}
-              class="theme-icon theme-icon-light"
-            />
-            <Icon
-              type="lucide"
-              name="moon"
-              width={16}
-              height={16}
-              class="theme-icon theme-icon-dark"
-            />
+            <span class="theme-icon theme-icon-light">☀️</span>
+            <span class="theme-icon theme-icon-dark">🌙</span>
           </div>
         </div>
       </button>
@@ -214,7 +202,7 @@ const path = Astro.url.pathname;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Overpass Mono", monospace;
+    font-family: "Funnel Sans", "Noto Sans SC", sans-serif;
     z-index: 50;
   }
 
@@ -311,11 +299,10 @@ const path = Astro.url.pathname;
     background-color: var(--primary);
     border-color: var(--primary);
   }
-
   .theme-toggle-thumb {
     width: 20px;
     height: 20px;
-    background-color: var(--text-color);
+    background-color: transparent;
     border-radius: 50%;
     position: absolute;
     top: 1px;
@@ -327,20 +314,21 @@ const path = Astro.url.pathname;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
   }
-
   .theme-toggle.light .theme-toggle-thumb {
     transform: translateX(24px);
-    background-color: var(--bg-color);
+    background-color: transparent;
   }
-
   .theme-icon {
     position: absolute;
     transition:
       opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--bg-color);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .theme-icon-light {
@@ -352,11 +340,9 @@ const path = Astro.url.pathname;
     opacity: 1;
     transform: scale(1) rotate(0deg);
   }
-
   .theme-toggle.light .theme-icon-light {
     opacity: 1;
     transform: scale(1) rotate(0deg);
-    color: var(--text-color);
   }
 
   .theme-toggle.light .theme-icon-dark {
